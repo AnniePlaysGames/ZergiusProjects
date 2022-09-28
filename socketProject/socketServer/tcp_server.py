@@ -1,6 +1,10 @@
 import socketserver
 
 
+class ThreadingTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    pass
+
+
 class TCPHandler(socketserver.BaseRequestHandler):
     def handle(self) -> None:
         data = self.request.recv(1024).strip()
@@ -11,5 +15,5 @@ class TCPHandler(socketserver.BaseRequestHandler):
 
 
 if __name__ == '__main__':
-    with socketserver.TCPServer(("", 8888), TCPHandler) as server:
+    with ThreadingTCPServer(("192.168.0.11", 5000), TCPHandler) as server:
         server.serve_forever()
