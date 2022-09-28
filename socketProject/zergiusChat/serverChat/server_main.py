@@ -1,4 +1,4 @@
-from constants import IP, PORT
+from zergiusChat.constants import IP, PORT
 from handler import Handler
 from server import Server
 
