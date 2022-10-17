@@ -12,5 +12,11 @@ with engine.connect() as connection:
     )
     connection.commit()
 
-    result = connection.execute(text("select * from some_table"))
-    print(result.all())
+
+# Чтобы не вызывать commit в конце блока кода, мы  можем использовать begin. Таким образом мы гарантируем заранее, что запрос будет зафиксирован. Такой стиль называется "Begin once"
+
+with engine.begin() as connection_2:
+    connection_2.execute(
+        text("INSERT INTO some_table (x, y) VALUES (:x, :y)"),
+        [{"x": 6, "y": 8}, {"x": 9, "y": 10}],
+    )
