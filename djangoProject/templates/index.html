@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
+{% load static %}
   <head>
     <title>Journey Begins</title>
-    <link rel="stylesheet" href="css/style.css">
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
   </head>
   <body>
     <div class="content">
@@ -16,7 +17,7 @@
         </h1>
       </div>
       <div class="content__image">
-          <img src="img/main_photo.jpg" alt="">
+          <img src={% static 'img/main_photo.jpg' %} alt="">
       </div>
       <div class="content-bottom">
         <div class="content-bottom__text">
